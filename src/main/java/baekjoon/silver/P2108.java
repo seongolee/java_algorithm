@@ -11,6 +11,8 @@ import java.util.*;
 //    2) 최대빈값을 저장할 리스트를 저장하고, 최대빈값 기준점이 바뀌게 되면, list clear 처리 한다.
 //    3) 반복문 로직이 끝났을때 최대빈 리스트 사이즈가 2이상이면 2번째 값을 추출하고, 그렇지 않으면 첫번째 값을 그대로 추출한다.
 // 4. 범위 : 정렬되어있는 list 에서 0 번과 마지막 index 의 값을 뽑아서 0번 인덱스의 값을 부호를 바꿔주는 작업을 한 후 더해준다.
+
+// 출력시 조건에 산술평균 소수점 이하 첫째 자리에서 반올림 하는 조건 추가
 public class P2108 {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
@@ -48,7 +50,7 @@ public class P2108 {
         Arrays.sort(arr);
         Collections.sort(maxList);
 
-        answer[0] /= N; // 산술평균값
+        answer[0] = (int)Math.round((double)answer[0] / N); // 산술평균값
         answer[2] = maxList.size() > 1 ? maxList.get(1) : maxList.get(0); // 최빈값
         answer[1] = arr[N/2]; // 중앙값
         answer[3] = -arr[0] + arr[N-1]; // 범위값
